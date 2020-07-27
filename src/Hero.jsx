@@ -4,8 +4,8 @@ class Hero extends Component {
 
     state = {
         heroId: -189, 
-        movies: ['Movie 1', 'Movie 2','Movie 3'],
-        likeCount : 0
+        movies: ['Movie 1', 'Movie 2'],
+        likeCount : this.props.likeCount,
     };
     render(){
         return(
@@ -19,8 +19,9 @@ class Hero extends Component {
                        <h6>Avengers Birth Name</h6>
                             
                             <ul>{this.showMovie()} </ul>
-                            <button className="btn btn-primary " onClick = {this.likeAvenger()}>
-                                Like <span className = "badge badge-light">
+                            <button className="btn btn-primary " onClick = {() => {this.likeAvenger(1)}}>
+                                Like{""}
+                                 <span className = "badge badge-light">
                                     {this.state.likeCount}
                                 </span>
                             </button>     
@@ -40,11 +41,11 @@ isHero(){
 showMovie(){
     if(this.state.movies.length===0) return <p>No movies available</p>
 
-    return this.state.movies.map(movie => <li>{movie}</li>);
+    return this.state.movies.map(movie => <li key = {this.state.movies.indexOf(movie)}>{movie}</li>);
     }
 
-    likeAvenger = () => {
-        console.log("******you have Liked this Avenger******")
+    likeAvenger = (likeCount) => {
+        this.setState( { likeCount : this.state.likeCount +1});
     };
 }
 

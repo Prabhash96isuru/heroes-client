@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css"
 import Hero from './Hero';
+import heroes from "./heroes";
 
 
-ReactDOM.render(<Hero />,document.getElementById('root'));
+ReactDOM.render(<heroes />,document.getElementById("root"));
 
 
 
