@@ -2,7 +2,11 @@ import React, {Component} from "react";
 
 class Hero extends Component {
 
-    state = {heroId: -189, movies: ['Movie 1', 'Movie 2','Movie 3','Movie 4']};
+    state = {
+        heroId: -189, 
+        movies: ['Movie 1', 'Movie 2','Movie 3'],
+        likeCount : 0
+    };
     render(){
         return(
     
@@ -13,17 +17,13 @@ class Hero extends Component {
                 <div className="card-body">
                     <h5 className="card-title">Avengers Name</h5>
                        <h6>Avengers Birth Name</h6>
-                        <p className="card-text">
                             
-                            <ul>
-                                <li>Movie 1</li>
-                                <li>Movie 2</li>
-                                <li>Movie 3</li>
-                                <li>Movie 4</li>
-                            </ul>
-                        </p>
-                            <button className="btn btn-primary">Like</button>
-                                
+                            <ul>{this.showMovie()} </ul>
+                            <button className="btn btn-primary " onClick = {this.likeAvenger()}>
+                                Like <span className = "badge badge-light">
+                                    {this.state.likeCount}
+                                </span>
+                            </button>     
                             
                     </div>
             </div>
@@ -42,6 +42,10 @@ showMovie(){
 
     return this.state.movies.map(movie => <li>{movie}</li>);
     }
+
+    likeAvenger = () => {
+        console.log("******you have Liked this Avenger******")
+    };
 }
 
 export default Hero;
