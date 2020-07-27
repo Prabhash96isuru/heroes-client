@@ -1,11 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.css"
 import Hero from './Hero';
 import heroes from "./heroes";
+import NavBar from "./NavBar"
 
 
-ReactDOM.render(<heroes />,document.getElementById("root"));
+ReactDOM.render(
+    <React.Fragment>
+      <NavBar />
+      <Route path= "/heroes" components= {heroes}/>
+    </React.Fragment>,
+    document.getElementById("root")
+    );
 
 
 

@@ -3,9 +3,9 @@ import React, {Component} from "react";
 class Hero extends Component {
 
     state = {
-        heroId: -189, 
-        movies: ['Movie 1', 'Movie 2'],
-        likeCount : this.props.likeCount,
+        heroId: this.props.avenger.heroId, 
+        movies: this.props.avenger.movies,
+        likeCount : this.props.avenger.likeCount,
     };
     render(){
         return(
@@ -15,14 +15,16 @@ class Hero extends Component {
                 class="card-img-top"/>
 
                 <div className="card-body">
-                    <h5 className="card-title">Avengers Name</h5>
-                       <h6>Avengers Birth Name</h6>
+        <h5 className="card-title">{this.props.avenger.name}</h5>
+                       <h6>{this.props.avenger.birthname}</h6>
                             
                             <ul>{this.showMovie()} </ul>
-                            <button className="btn btn-primary " onClick = {() => {this.likeAvenger(1)}}>
-                                Like{""}
+                            <button className="btn btn-info "
+                                     onClick = {() => {
+                                         this.likeAvenger(1)}}>
+                                             Like{""}
                                  <span className = "badge badge-light">
-                                    {this.state.likeCount}
+                                    {this.props.avenger.likeCount}
                                 </span>
                             </button>     
                             
@@ -39,13 +41,14 @@ isHero(){
     }
 
 showMovie(){
-    if(this.state.movies.length===0) return <p>No movies available</p>
+    if(this.props.avenger.movies.length===0) 
+    return <p>No movies available</p>
 
-    return this.state.movies.map(movie => <li key = {this.state.movies.indexOf(movie)}>{movie}</li>);
+    return this.props.avenger.movies.map(movie => <li key = {this.state.movies.indexOf(movie)}>{movie}</li>);
     }
 
     likeAvenger = (likeCount) => {
-        this.setState( { likeCount : this.state.likeCount +1});
+      //  this.setState( { likeCount : this.state.likeCount +1});
     };
 }
 
